@@ -25,4 +25,4 @@ Public pages read universities, courses, notifications, gallery content, about c
 
 ## Security notes
 
-Passwords use bcrypt hashes, tokens expire after eight hours, admin endpoints enforce role checks, login/API routes are rate-limited, uploads have size/type limits, and secrets only come from environment variables.
+Passwords use bcrypt hashes,admin endpoints enforce role checks, login/API routes are rate-limited, uploads have size/type limits, and secrets only come from environment variables.
