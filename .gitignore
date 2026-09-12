@@ -1,0 +1,96 @@
+# ==============================================================================
+# Dependencies
+# ==============================================================================
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# ==============================================================================
+# Next.js & Frontend Build Outputs
+# ==============================================================================
+frontend/.next/
+.next/
+out/
+dist/
+**/dist/
+build/
+.vercel
+
+# ==============================================================================
+# Environment Variables & Secrets (Keep .env.example tracked)
+# ==============================================================================
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+backend/.env
+frontend/.env
+*.env
+!.env.example
+!**/.env.example
+
+# ==============================================================================
+# Logs & Debugging
+# ==============================================================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==============================================================================
+# Database & Prisma
+# ==============================================================================
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+backend/prisma/dev.db
+backend/prisma/*.db
+backend/prisma/*.db-journal
+
+# ==============================================================================
+# Uploads & Media Files (Exclude contents but keep folder placeholder)
+# ==============================================================================
+backend/uploads/*
+!backend/uploads/.gitkeep
+uploads/*
+!uploads/.gitkeep
+
+# ==============================================================================
+# Cache & Testing
+# ==============================================================================
+.cache/
+.eslintcache
+.turbo/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+next-env.d.ts
+
+# ==============================================================================
+# IDE & System Files
+# ==============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor configs (VSCode / JetBrains)
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

@@ -1,0 +1,6 @@
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { LockKeyhole } from 'lucide-react';
+import { api } from '../../../lib/api';
+export default function AdminLogin() { const [email, setEmail] = useState(''); const [password, setPassword] = useState(''); const [error, setError] = useState(''); const router = useRouter(); async function submit(event) { event.preventDefault(); setError(''); try { const result = await api('/auth/login', { method:'POST', body: JSON.stringify({ email, password }) }); localStorage.setItem('portal_token', result.token); router.push('/admin/dashboard'); } catch (reason) { setError(reason.message); } } return <main className="admin-login"><form onSubmit={submit}><span className="admin-icon"><LockKeyhole/></span><p className="section-kicker">Staff access</p><h1>Portal administration</h1><p>Sign in to manage website content and student enquiries.</p><label>Email<input type="email" value={email} onChange={e => setEmail(e.target.value)} required/></label><label>Password<input type="password" value={password} onChange={e => setPassword(e.target.value)} required/></label><button className="button button-primary">Sign in</button>{error && <p className="form-error">{error}</p>}<small>Use credentials configured in the backend environment.</small></form></main>; }

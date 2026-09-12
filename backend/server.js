@@ -1,0 +1,1 @@
+const fs=require('fs'); const path=require('path'); const app=require('./app'); const port=process.env.PORT || 4000; const uploadDirectory=path.join(__dirname,'uploads'); if(!fs.existsSync(uploadDirectory)) fs.mkdirSync(uploadDirectory); app.listen(port,()=>console.log(`Distance education API listening on http://localhost:${port}`));

@@ -1,0 +1,46 @@
+{
+  "info": { "name": "Distance Education Guidance Portal API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:4000/api" }, { "key": "token", "value": "" }],
+  "item": [
+    { "name": "Authentication", "item": [
+      { "name": "Login", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"ChangeMe123!\"\n}" }, "url": "{{baseUrl}}/auth/login" }, "event": [{ "listen": "test", "script": { "exec": ["if (pm.response.code === 200) pm.collectionVariables.set('token', pm.response.json().data.token);"] } }] },
+      { "name": "Logout", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/auth/logout" } }
+    ] },
+    { "name": "Universities", "item": [
+      { "name": "Get Universities", "request": { "method": "GET", "url": "{{baseUrl}}/universities" } },
+      { "name": "Create University", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\":\"Sample University\",\"description\":\"Distance education guidance\",\"status\":true}" }, "url": "{{baseUrl}}/universities" } },
+      { "name": "Update University", "request": { "method": "PATCH", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"status\":false}" }, "url": "{{baseUrl}}/universities/:id" } },
+      { "name": "Delete University", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/universities/:id" } }
+    ] },
+    { "name": "Courses", "item": [
+      { "name": "Get Courses", "request": { "method": "GET", "url": "{{baseUrl}}/courses" } },
+      { "name": "Get Course", "request": { "method": "GET", "url": "{{baseUrl}}/courses/:id" } },
+      { "name": "Create Course", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\":\"B.Com\",\"university_id\":\"university-uuid\",\"category\":\"Commerce\",\"level\":\"Undergraduate\",\"duration\":\"3 Years\",\"eligibility\":\"10+2\",\"description\":\"Course description\"}" }, "url": "{{baseUrl}}/courses" } },
+      { "name": "Update Course", "request": { "method": "PUT", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"featured\":true}" }, "url": "{{baseUrl}}/courses/:id" } },
+      { "name": "Delete Course", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/courses/:id" } }
+    ] },
+    { "name": "Notifications", "item": [
+      { "name": "Get Notifications", "request": { "method": "GET", "url": "{{baseUrl}}/notifications" } },
+      { "name": "Create Notification", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"title\":\"Hall Ticket Released\",\"description\":\"Check official portal.\",\"type\":\"Hall Ticket\",\"important\":true,\"published\":true}" }, "url": "{{baseUrl}}/notifications" } },
+      { "name": "Update Notification", "request": { "method": "PATCH", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"published\":false}" }, "url": "{{baseUrl}}/notifications/:id" } },
+      { "name": "Delete Notification", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/notifications/:id" } }
+    ] },
+    { "name": "Gallery", "item": [
+      { "name": "Get Gallery", "request": { "method": "GET", "url": "{{baseUrl}}/gallery" } },
+      { "name": "Upload File", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "body": { "mode": "formdata", "formdata": [{ "key": "file", "type": "file" }] }, "url": "{{baseUrl}}/uploads" } },
+      { "name": "Create Gallery Image", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"title\":\"Counselling session\",\"image_url\":\"/uploads/image.jpg\",\"category\":\"Counselling\",\"published\":true}" }, "url": "{{baseUrl}}/gallery" } },
+      { "name": "Delete Gallery Image", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/gallery/:id" } }
+    ] },
+    { "name": "Enquiries", "item": [
+      { "name": "Create Enquiry", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\":\"Student Name\",\"phone\":\"+919000000000\",\"email\":\"student@example.com\",\"message\":\"I need course guidance.\"}" }, "url": "{{baseUrl}}/enquiries" } },
+      { "name": "Get Enquiries", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/enquiries" } },
+      { "name": "Update Enquiry", "request": { "method": "PATCH", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"status\":\"Contacted\"}" }, "url": "{{baseUrl}}/enquiries/:id" } }
+    ] },
+    { "name": "Content", "item": [
+      { "name": "Get Settings", "request": { "method": "GET", "url": "{{baseUrl}}/settings" } },
+      { "name": "Update Settings", "request": { "method": "PUT", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"phone\":\"+919000000000\"}" }, "url": "{{baseUrl}}/settings" } },
+      { "name": "Get About", "request": { "method": "GET", "url": "{{baseUrl}}/about" } },
+      { "name": "Update About", "request": { "method": "PUT", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"mission\":\"Updated mission\"}" }, "url": "{{baseUrl}}/about" } }
+    ] }
+  ]
+}

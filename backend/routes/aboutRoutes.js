@@ -1,0 +1,1 @@
+const router=require('express').Router(); const { publicAbout,updateAbout }=require('../controllers/contentController'); const { authenticate,authorize }=require('../middleware/auth'); router.get('/',publicAbout);router.put('/',authenticate,authorize('ADMIN'),updateAbout);module.exports=router;
