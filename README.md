@@ -1,6 +1,6 @@
 # Distance Education Guidance Portal
 
-A JavaScript-only full-stack platform for an independent student guidance organisation supporting distance education learners. It is intentionally presented as a guidance/support service, not an official university site.
+A full-stack platform for an independent student guidance organisation supporting distance education learners. It is intentionally presented as a guidance/support service, not an official university site.
 
 ## Stack
 
