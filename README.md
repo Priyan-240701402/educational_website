@@ -4,7 +4,7 @@ A full-stack platform for an independent student guidance organisation supportin
 
 ## Stack
 
-- `frontend/`: Next.js + React + CSS (JavaScript/JSX only)
+- `frontend/`: Next.js + React + CSS
 - `backend/`: Node.js + Express REST API
 - `database/schema/001_initial.sql`: PostgreSQL relational schema
 - `postman/distance-education-api.json`: importable API test collection
